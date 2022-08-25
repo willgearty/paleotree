@@ -241,8 +241,8 @@ getPhyloPicIDNumFromPBDB <- function(
 canConnectPBDB <- function(fail = TRUE){
     # ip = "8.8.8.8"
     # is PBDB up
-    res <- RCurl::url.exists("https://paleobiodb.org/")
-    if(!res){ 
+    res <- httr::http_error("https://paleobiodb.org/")
+    if(res){ 
         connectMessage <- "Cannot connect to Paleobiology Database at https://paleobiodb.org/"
         if(fail){
             stop(connectMessage)
@@ -253,10 +253,10 @@ canConnectPBDB <- function(fail = TRUE){
         }
     #
     # is PBDB data service up
-    res <- RCurl::url.exists(
+    res <- httr::http_error(
         "https://paleobiodb.org/data1.2/taxa/single.txt?name=Dicellograptus"
         )
-    if(!res){
+    if(res){
         connectMessage <- "Cannot connect to Paleobiology Database API at https://paleobiodb.org/data1.2/"
         if(fail){
             stop(connectMessage)
