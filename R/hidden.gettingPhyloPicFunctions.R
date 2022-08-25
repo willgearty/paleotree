@@ -254,7 +254,7 @@ canConnectPBDB <- function(fail = TRUE){
     #
     # is PBDB data service up
     res <- RCurl::url.exists(
-        "https://paleobiodb.org/data1.2/taxa/single.txt?name=Dicellograptus/"
+        "https://paleobiodb.org/data1.2/taxa/single.txt?name=Dicellograptus"
         )
     if(!res){
         connectMessage <- "Cannot connect to Paleobiology Database API at https://paleobiodb.org/data1.2/"
